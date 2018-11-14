@@ -1,0 +1,20 @@
+<html>
+<div id="chartContainer">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+    <script type="text/javascript">
+        var svg = dimple.newSvg("#chartContainer", 490, 430);
+        d3.csv("data/Birds.csv", function (data) {
+            var myChart = new dimple.chart(svg, data);
+            myChart.setBounds(60, 10, 400, 330)
+            var x = myChart.addCategoryAxis("x", ["SPECIES"]);
+            myChart.addMeasureAxis("y", "Test");
+            var s = myChart.addSeries("SPECIES", dimple.plot.bar);
+            s.barGap = 0.05;
+            myChart.draw();
+        });
+    </script>
+
+</div>
+
+</html>
