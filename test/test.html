@@ -1,20 +1,40 @@
+<!DOCTYPE html>
 <html>
-<div id="chartContainer">
+
+<head>
+    <title>Test-Dimple</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
-    <script type="text/javascript">
-        var svg = dimple.newSvg("#chartContainer", 490, 430);
-        d3.csv("data/Birds.csv", function (data) {
-            var myChart = new dimple.chart(svg, data);
-            myChart.setBounds(60, 10, 400, 330)
-            var x = myChart.addCategoryAxis("x", ["SPECIES"]);
-            myChart.addMeasureAxis("y", "Test");
-            var s = myChart.addSeries("SPECIES", dimple.plot.bar);
-            s.barGap = 0.05;
-            myChart.draw();
-        });
-    </script>
+</head>
 
-</div>
+<body>
+    <div id="chartContainer">
+
+        <script type="text/javascript">
+            let svg = dimple.newSvg("#chartContainer", 1600, 800);//creating a SVG with given size
+            d3.csv("athletes.csv", function (data)// function called when athlets.csv is done loading
+            {/*
+                let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
+                chart.addCategoryAxis("x", "sport"); // setting the x axis to show the sports
+                chart.addMeasureAxis("y", "gold"); // setting the y axis to show the no. of golds own
+                chart.addSeries("nationality", dimple.plot.bar); // plotting, with nationality as series.
+                chart.draw();//dessine la chart 
+                */
+
+                let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
+                chart.addCategoryAxis("x", "sport"); // setting the x axis to show the sports
+                chart.addMeasureAxis("y", "gold"); // setting the y axis to show the no. of golds own
+                chart.addSeries("nationality", dimple.plot.bubble); // plotting, with nationality as series.
+                chart.draw();//dessine la chart
+                
+            });
+        </script>
+    </div>
+</body>
+
+
+
 
 </html>
