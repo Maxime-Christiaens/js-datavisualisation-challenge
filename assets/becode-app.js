@@ -49,30 +49,30 @@ class object {
 
 let data = [];
 let stockage = null;
+let compte = 0;
 
-for (j=0; j<12; j++){
+for (j=0; j<7; j++){
     for (i=1; i<12 ; i++){
         stockage = new object(table1TH[(i+4)].innerHTML, table1TD[(j*12)].innerHTML, table1TD[i+(12*j)].innerHTML);
-
-        data[((j)*12)+i] = stockage;//incrémente toutes les données
-        /*
-        if (data.length < 385){
-        data[((j)*12)+i] = stockage;//incrémente toutes les données
+        if (stockage == undefined){
+            compte += 1;
         }
-        */
+        else if (stockage.crimes == ":"){
+            compte += 1;
+        }
+        else{
+            data[((j)*12)+i] = stockage;//incrémente toutes les données
+            console.log(stockage);
+        }
     }
 }
+data.shift();
+for (k=1; k<12 ; k++){
+    if (data[k] == undefined){
+        data.splice(k, 1);
+    }
 
-for (let k=0; k<data.length+1; k++){
-    if (data[k] == undefined ){
-        data.splice(k, 1);
-        //élimine en position K un élément qui a une valeur indéfini
-    }
-    else if (data[k].crimes == ":"){
-        data.splice(k, 1);
-    }
 }
-
 console.log(data);  
 
 let svg = dimple.newSvg("#graph1", 1200, 600);//creating a SVG with given size
