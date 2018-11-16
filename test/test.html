@@ -14,8 +14,8 @@
 
         <script type="text/javascript">
             let svg = dimple.newSvg("#chartContainer", 1600, 800);//creating a SVG with given size
-            d3.csv("athletes.csv", function (data)// function called when athlets.csv is done loading
-            {/*
+            //d3.csv("athletes.csv", function (data)// function called when athlets.csv is done loading
+            /*
                 let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
                 chart.addCategoryAxis("x", "sport"); // setting the x axis to show the sports
                 chart.addMeasureAxis("y", "gold"); // setting the y axis to show the no. of golds own
@@ -23,13 +23,42 @@
                 chart.draw();//dessine la chart 
                 */
 
+                /*
                 let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
                 chart.addCategoryAxis("x", "sport"); // setting the x axis to show the sports
                 chart.addMeasureAxis("y", "gold"); // setting the y axis to show the no. of golds own
                 chart.addSeries("nationality", dimple.plot.bubble); // plotting, with nationality as series.
                 chart.draw();//dessine la chart
-                
-            });
+                */
+                let data = [
+                    { "Année": "2002", "Infractions": 500, "Pays": "Belgique" },
+                    { "Année": "2003", "Infractions": 750, "Pays": "Belgique" },
+                    { "Année": "2004", "Infractions": 500, "Pays": "Belgique" },
+                    { "Année": "2005", "Infractions": 1000, "Pays": "Belgique" },
+                    { "Année": "2006", "Infractions": 1200, "Pays": "Belgique" },
+                    { "Année": "2007", "Infractions": 1100, "Pays": "Belgique" },
+                    { "Année": "2008", "Infractions": 1700, "Pays": "Belgique" },
+                    { "Année": "2009", "Infractions": 2000, "Pays": "Belgique" },
+                    { "Année": "2010", "Infractions": 2200, "Pays": "Belgique" },
+                    { "Année": "2011", "Infractions": 2500, "Pays": "Belgique" },
+                    { "Année": "2012", "Infractions": 2300, "Pays": "Belgique" },
+                    { "Année": "2002", "Infractions": 400, "Pays": "France" },
+                    { "Année": "2003", "Infractions": 650, "Pays": "France" },
+                    { "Année": "2004", "Infractions": 400, "Pays": "France" },
+                    { "Année": "2005", "Infractions": 900, "Pays": "France" },
+                    { "Année": "2006", "Infractions": 1100, "Pays": "France" },
+                    { "Année": "2007", "Infractions": 1000, "Pays": "France" },
+                    { "Année": "2008", "Infractions": 1800, "Pays": "France" },
+                    { "Année": "2009", "Infractions": 2200, "Pays": "France" },
+                    { "Année": "2010", "Infractions": 2400, "Pays": "France" },
+                    { "Année": "2011", "Infractions": 2300, "Pays": "France" },
+                    { "Année": "2012", "Infractions": 2500, "Pays": "France" }
+                ];
+                let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
+                chart.addCategoryAxis("x", "Année"); // setting the x axis to show the sports
+                chart.addMeasureAxis("y", "Infractions"); // setting the y axis to show the no. of golds own
+                chart.addSeries("Pays", dimple.plot.line); // plotting, with nationality as series.
+                chart.draw();//dessine la chart
         </script>
     </div>
 </body>
