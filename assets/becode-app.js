@@ -24,11 +24,8 @@ const SpawnNode2 = document.getElementById("Homicides");
 
 let divJS = document.createElement("div");
 //créer un div dans le document
-divJS.id = "#graph1"
+divJS.id = "graph1"
 //créer un id attaché au divJS
-divJS.innerHTML = "bonsoir";
-//bonsoir va contenir le message bonsoir
-divJS.setAttribute("class", "red");
 
 //var insertH2JS = table1Node.insertBefore(divJS, null);
 
@@ -40,11 +37,6 @@ SpawnNode.appendChild(divJS);
 table1TD = table1.getElementsByTagName("td"); //séléction tout les td
 table1TH = table1.getElementsByTagName("th");
 //récupère toute les valeurs du tableaux conserver dans les élémentes td;
-
-console.log(table1TD[0].innerHTML);
-console.log(table1TD[12].innerHTML);
-console.log(table1TH[15].innerHTML);
-//console.log(table1TD[0].innerHTML);
 
 class object {
     constructor(year, country, crimes) {
@@ -58,26 +50,36 @@ class object {
 let data = [];
 let stockage = null;
 
-/*
-for (i=1; i<12 ; i++){
-    stockage = new object(table1TH[(i+4)].innerHTML, table1TD[0].innerHTML, table1TD[i].innerHTML);
-    console.log(stockage);
-    data[i-1] = stockage;//incrémente toutes les données
-}
-*/
-
-for (j=0; j<((37*12)+1); j++){
+for (j=0; j<7; j++){
     for (i=1; i<12 ; i++){
         stockage = new object(table1TH[(i+4)].innerHTML, table1TD[(j*12)].innerHTML, table1TD[i+(12*j)].innerHTML);
-        console.log(stockage);
-        data[i-1] = stockage;//incrémente toutes les données
+
+        data[((j)*12)+i] = stockage;//incrémente toutes les données
+        /*
+        if (data.length < 385){
+        data[((j)*12)+i] = stockage;//incrémente toutes les données
+        }
+        */
     }
 }
+for (let k=0; k<data.length; k++){
+    if (data[k] == undefined){
+        data.splice(k, 1);
+        //élimine en position K un élément qui a une valeur indéfini
+    }
+    if (data[k].crimes.isInteger == false){
+        data.splice(k, 1);
+    }
+}
+console.log(data);  
 
-console.log(data);
 
-
-
+let svg = dimple.newSvg("#graph1", 1200, 600);//creating a SVG with given size
+let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
+chart.addCategoryAxis("x", "year"); // setting the x axis to show the sports
+chart.addMeasureAxis("y", "crimes"); // setting the y axis to show the no. of golds own
+chart.addSeries("country", dimple.plot.line); // plotting, with nationality as series.
+chart.draw();//dessine la chart
 
 
 
