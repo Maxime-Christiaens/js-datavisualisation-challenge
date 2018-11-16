@@ -50,7 +50,7 @@ class object {
 let data = [];
 let stockage = null;
 
-for (j=0; j<7; j++){
+for (j=0; j<12; j++){
     for (i=1; i<12 ; i++){
         stockage = new object(table1TH[(i+4)].innerHTML, table1TD[(j*12)].innerHTML, table1TD[i+(12*j)].innerHTML);
 
@@ -62,17 +62,18 @@ for (j=0; j<7; j++){
         */
     }
 }
-for (let k=0; k<data.length; k++){
-    if (data[k] == undefined){
+
+for (let k=0; k<data.length+1; k++){
+    if (data[k] == undefined ){
         data.splice(k, 1);
         //élimine en position K un élément qui a une valeur indéfini
     }
-    if (data[k].crimes.isInteger == false){
+    else if (data[k].crimes == ":"){
         data.splice(k, 1);
     }
 }
-console.log(data);  
 
+console.log(data);  
 
 let svg = dimple.newSvg("#graph1", 1200, 600);//creating a SVG with given size
 let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
