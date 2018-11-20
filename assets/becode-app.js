@@ -213,10 +213,26 @@ function draw() {
 ///EXO 2///
 ///////////
 
-let data3 = [];
-let collect = [];
 
-let svg3 = dimple.newSvg("#graph1", 2400, 500);//creating a SVG with given size
+    ///////////////////////////////////////
+    ///A.Création d'une div dans le HTML///
+    ///////////////////////////////////////
+
+    const heading = document.getElementById("firstHeading");
+    //id du tableau 1
+
+    let ruben = document.createElement("div");
+    //créer un div dans le document
+    ruben.id = "graph3"
+    //créer un id attaché au divJS
+
+    heading.appendChild(ruben);
+    //insérer le div après le h3 
+
+
+let data3 = [];
+
+let svg3 = dimple.newSvg("#graph3", 800, 500);//creating a SVG with given size
 let chart3 = new dimple.chart(svg3, data3); // getting a Chart instance to draw on
 chart3.addCategoryAxis("x", "x"); // setting the x axis to show the sports
 chart3.addMeasureAxis("y", "y"); // setting the y axis to show the no. of golds own
