@@ -6,13 +6,13 @@ Date : 14-11-18 - 16-11-18
 Contact information : maxime.ad.christiaens@gmail.com
 
 What does this script do ? 
-...
+It draw graph from the information of the tables
 
 */
 
-// Your scripting goes here...
-
-//Node.insertBefore() : insérer avant un noeud
+///////////////////////////////////////
+///A.Création d'une div dans le HTML///
+///////////////////////////////////////
 
 const table1 = document.getElementById("table1");
 //id du tableau 1
@@ -27,16 +27,30 @@ let divJS = document.createElement("div");
 divJS.id = "graph1"
 //créer un id attaché au divJS
 
-//var insertH2JS = table1Node.insertBefore(divJS, null);
+let divJS2 = document.createElement("div");
+//créer un div dans le document
+divJS2.id = "graph2"
+//créer un id attaché au divJS2
 
 SpawnNode.appendChild(divJS);
 //insérer le div après le h3 
+SpawnNode2.appendChild(divJS2);
+//insérer le div après le h3 
 
-//SpawnNode2.appendChild(div2JS);
 
 table1TD = table1.getElementsByTagName("td"); //séléction tout les td
 table1TH = table1.getElementsByTagName("th");
 //récupère toute les valeurs du tableaux conserver dans les élémentes td;
+
+//////////////////////////////////////////////////
+///B.Récupération des informations des tableaux///
+//////////////////////////////////////////////////
+
+/////////////////////
+//1. Récupérer l'info
+
+////////////////////////
+//2. Récupérateur d'info
 
 class object {
     constructor(year, country, crimes) {
@@ -45,24 +59,33 @@ class object {
       this.crimes = crimes;
     }
 }
-//permet de créer un objet
+//permet de créer un objet qui contiendra l'année, le pays et le nombres de crimes
 
 let data = [];
+//stockera toute les données
 let stockage = null;
+//contiendra chaque objet
 let compte = 0;
+//un compte pour connaitre le nombre d'objet non stocké dans data
+let NbrOfCountry = 35;
+//nombre de pays dans la liste 
+/////////////////////////////////////////////////////////A récupérer automatiquement
+let TDtable1 = 12;
+//nombre de td (cellule) par ligne (tr) dans la tableau 
+////////////////////////////////////////////////////////A récupérer automatiquement
 
-for (j=0; j<35; j++){
-    for (i=1; i<12 ; i++){
-        stockage = new object(table1TH[(i+4)].innerHTML, table1TD[(j*12)].innerHTML, table1TD[i+(12*j)].innerHTML);
+for (j=0; j<NbrOfCountry; j++){
+    for (i=1; i<TDtable1 ; i++){
+        stockage = new object(table1TH[(i+4)].innerHTML, table1TD[(j*TDtable1)].innerHTML, table1TD[i+(TDtable1*j)].innerHTML);
         if (stockage == undefined){
             compte += 1;
         }
         else if (stockage.crimes == ":"){
             stockage.crimes = 0;
-            data[((j)*12)+i] = stockage;//incrémente toutes les données
+            data[((j)*TDtable1)+i] = stockage;//incrémente toutes les données
         }
         else{
-            data[((j)*12)+i] = stockage;//incrémente toutes les données
+            data[((j)*TDtable1)+i] = stockage;//incrémente toutes les données
             console.log(stockage);
         }
     }
@@ -82,6 +105,8 @@ let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
 chart.addCategoryAxis("x", "year"); // setting the x axis to show the sports
 chart.addMeasureAxis("y", "crimes"); // setting the y axis to show the no. of golds own
 chart.addSeries("country", dimple.plot.line); // plotting, with nationality as series.
+chart.addLegend(750, 60, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
+//quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
 chart.draw();//dessine la chart
 
 
