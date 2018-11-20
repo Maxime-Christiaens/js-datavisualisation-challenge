@@ -213,36 +213,37 @@ function draw() {
 ///EXO 2///
 ///////////
 
-function dab() {
+let data3 = [];
 
+function dab() {
     let xhr = new XMLHttpRequest; //requête http
     xhr.open("GET", "https://inside.becode.org/api/v1/data/random.json", true);//open l'url
     xhr.onload = function () {//charge le contenu
         console.log(this.response);//this représente tout ce qui a été open, le point response récupère juste les données
         let ajaj = JSON.parse(this.responseText);
-        let data3 = [];
         for (let s = 0; s < ajaj.length; s++) {
             data3.push({
                 "x": ajaj[s][0],
                 "y": ajaj[s][1],
+                "bonsoir": "bonsoir",
             })
         }
         console.log(data3);
         return data3;
     }
     xhr.send();//send
-
 };
+
 function drawing() {
     let svg3 = dimple.newSvg("#graph1", 2400, 500);//creating a SVG with given size
     let chart3 = new dimple.chart(svg3, data3); // getting a Chart instance to draw on
     chart3.addCategoryAxis("x", "x"); // setting the x axis to show the sports
     chart3.addMeasureAxis("y", "y"); // setting the y axis to show the no. of golds own
+    chart3.addSeries("bonsoir", dimple.plot.line); // plotting, with nationality as series.
     //quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
     chart3.draw();//dessine la chart3
 }
 dab();
-drawing();
-//setInterval(dab, 1000);
+setTimeout(drawing, 1000);
 
-//créateur d'objet
+//setInterval(dab, 1000);
