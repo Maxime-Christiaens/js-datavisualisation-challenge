@@ -214,6 +214,14 @@ function draw() {
 ///////////
 
 let data3 = [];
+let collect = [];
+
+let svg3 = dimple.newSvg("#graph1", 2400, 500);//creating a SVG with given size
+let chart3 = new dimple.chart(svg3, data3); // getting a Chart instance to draw on
+chart3.addCategoryAxis("x", "x"); // setting the x axis to show the sports
+chart3.addMeasureAxis("y", "y"); // setting the y axis to show the no. of golds own
+chart3.addSeries("bonsoir", dimple.plot.line); // plotting, with nationality as series.
+//quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
 
 function dab() {
     let xhr = new XMLHttpRequest; //requête http
@@ -228,22 +236,8 @@ function dab() {
                 "bonsoir": "bonsoir",
             })
         }
-        console.log(data3);
-        return data3;
+        chart3.draw();//dessine la chart3
     }
     xhr.send();//send
 };
-
-function drawing() {
-    let svg3 = dimple.newSvg("#graph1", 2400, 500);//creating a SVG with given size
-    let chart3 = new dimple.chart(svg3, data3); // getting a Chart instance to draw on
-    chart3.addCategoryAxis("x", "x"); // setting the x axis to show the sports
-    chart3.addMeasureAxis("y", "y"); // setting the y axis to show the no. of golds own
-    chart3.addSeries("bonsoir", dimple.plot.line); // plotting, with nationality as series.
-    //quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
-    chart3.draw();//dessine la chart3
-}
-dab();
-setTimeout(drawing, 1000);
-
-//setInterval(dab, 1000);
+setInterval(dab, 1000);
