@@ -165,13 +165,13 @@ function draw() {
                 data2[((j) * TDtable2) + i] = stockage2;//incrémente toutes les données
             }
             else {
-                console.log(stockage2.country.length + stockage2.country);
+                //console.log(stockage2.country.length + stockage2.country);
                 if (stockage2.country.length == 55) {
                     stockage2.country = "Angleterre et Pays de Galles(UK)";
                     data2[((j) * TDtable2) + i] = stockage2;//incrémente toutes les données
                 }
                 data2[((j) * TDtable2) + i] = stockage2;//incrémente toutes les données
-                console.log(stockage2);
+                //console.log(stockage2);
             }
         }
     }
@@ -184,7 +184,7 @@ function draw() {
         }
 
     }
-    console.log(data2);
+    //console.log(data2);
 
     //retire les valeurs null
 
@@ -243,7 +243,7 @@ function dab() {
     let xhr = new XMLHttpRequest; //requête http
     xhr.open("GET", "https://inside.becode.org/api/v1/data/random.json", true);//open l'url
     xhr.onload = function () {//charge le contenu
-        console.log(this.response);//this représente tout ce qui a été open, le point response récupère juste les données
+        //console.log(this.response);//this représente tout ce qui a été open, le point response récupère juste les données
         let ajaj = JSON.parse(this.responseText);
         for (let s = 0; s < ajaj.length; s++) {
             data3.push({
