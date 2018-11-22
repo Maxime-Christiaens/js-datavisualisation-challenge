@@ -167,7 +167,7 @@ function draw() {
             else {
                 //console.log(stockage2.country.length + stockage2.country);
                 if (stockage2.country.length == 55) {
-                    stockage2.country = "Angleterre et Pays de Galles(UK)";
+                    stockage2.country = "Angleterre et Pays de Galles";
                     data2[((j) * TDtable2) + i] = stockage2;//incrémente toutes les données
                 }
                 data2[((j) * TDtable2) + i] = stockage2;//incrémente toutes les données
@@ -199,7 +199,7 @@ function draw() {
     chart2.addMeasureAxis("y", "crimes"); // setting the y axis to show the no. of golds own
     chart2.addSeries("country", dimple.plot.line); // plotting, with nationality as series.
     let chart2S = chart2.addSeries("country", dimple.plot.bubble);//créer des bubbles
-    chart2.addLegend(750, 30, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
+    chart2.addLegend(730, 40, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
     //quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
     chart2.draw();//dessine la chart2
 };
