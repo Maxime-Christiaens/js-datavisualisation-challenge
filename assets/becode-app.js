@@ -114,13 +114,13 @@ function draw() {
     ////////////////////////////
 
 
-    let svg = dimple.newSvg("#graph1", 1200, 600);//creating a SVG with given size
+    let svg = dimple.newSvg("#graph1", 870, 600);//creating a SVG with given size
     let chart = new dimple.chart(svg, data); // getting a Chart instance to draw on
     chart.addCategoryAxis("x", "year"); // setting the x axis to show the sports
     chart.addMeasureAxis("y", "crimes"); // setting the y axis to show the no. of golds own
     chart.addSeries("country", dimple.plot.line); // plotting, with nationality as series.
     let chartS = chart.addSeries("country", dimple.plot.bubble);//créer des bubbles
-    chart.addLegend(750, 60, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
+    chart.addLegend(780, 50, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
     //quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
     chart.draw();//dessine la chart
 
@@ -193,13 +193,13 @@ function draw() {
     ////////////////////////////
 
 
-    let svg2 = dimple.newSvg("#graph2", 2400, 500);//creating a SVG with given size
+    let svg2 = dimple.newSvg("#graph2", 895, 500);//creating a SVG with given size
     let chart2 = new dimple.chart(svg2, data2); // getting a Chart instance to draw on
     chart2.addCategoryAxis("x", "year"); // setting the x axis to show the sports
     chart2.addMeasureAxis("y", "crimes"); // setting the y axis to show the no. of golds own
     chart2.addSeries("country", dimple.plot.line); // plotting, with nationality as series.
     let chart2S = chart2.addSeries("country", dimple.plot.bubble);//créer des bubbles
-    chart2.addLegend(730, 40, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
+    chart2.addLegend(730, 30, 200, 600); //ajoute une légende les deux premières valeurs modifie la position en x et y respéctivement
     //quand au deux autres valeurs elle définisse la taille de la légende sur un axe x et y respéctivement
     chart2.draw();//dessine la chart2
 };
